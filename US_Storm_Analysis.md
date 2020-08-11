@@ -32,50 +32,8 @@ We will need the packages dplyr, ggplot2, and gridExtra for this analysis so the
 
 ```r
 library(dplyr)
-```
-
-```
-## Warning: package 'dplyr' was built under R version 3.6.3
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.6.3
-```
-
-```r
 library(gridExtra)
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
 ```
 
 The data set's variables for Property and Crop damage is coded awkwardly for analysis. The following will multiply the numbers in Property and Crop damage respectively to get the full number of the cost of damage. It will also assign zero to the either non-reported or null costs (NA's) for easier computation. Lastly the code creates a variable of total damage costs by adding the Property and Crop damage costs together.    
@@ -136,7 +94,7 @@ ggplot(top_occ, aes(reorder(vars, -total_occ), total_occ)) + geom_bar(stat = 'id
         theme(axis.text.x = element_text(angle = 45, hjust=1))
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-23-1.png)
 
 Tornadoes, according to the following code, are the most detrimental to human life both in fatalities and injuries alike. This also matches up with the frequency of tornadoes in the United States from Figure 1 in cementing their real world propensity.  
 
@@ -255,16 +213,16 @@ top_events <- df2 %>%
 plot1 <- ggplot(top_occ, aes(reorder(vars, -total_occ), total_occ)) + geom_bar(stat = 'identity') +
         theme_bw() + labs(x = 'Event Type', y = 'Occurances during 1950 - 2011') +
         labs(title = 'Figure 2: Top 10 Most Frequent Weather Phenomena 1950-2011') + 
-        theme(plot.title = element_text(size = 6)) +
+        theme(plot.title = element_text(size = 12)) +
         theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 plot2 <- ggplot(top_events, aes(reorder(EVTYPE, -total_cost), total_cost)) + geom_bar(stat = 'identity') +
         theme_bw() + labs(x = 'Event Type', y = 'Total Damage Cost (Property & Crop)') +
         labs(title = 'Figure 3: Top 10 Costliest Natural Phenomena 1950-2011') + 
-        theme(plot.title = element_text(size = 6)) +
+        theme(plot.title = element_text(size = 12)) +
         theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 grid.arrange(plot1, plot2, ncol=2)
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-27-1.png)
